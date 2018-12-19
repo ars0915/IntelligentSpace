@@ -15,3 +15,6 @@ Route::get('/', function () {
     #return view('welcome');
     return 'A___A';
 });
+
+Route::get('get_total_a', 'FacilityController@get_total_a');
+Route::get('get_total_b', 'FacilityController@get_total_b');
