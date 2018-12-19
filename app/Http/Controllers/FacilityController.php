@@ -13,8 +13,16 @@ class FacilityController extends Controller
         return Facility_A::all()->count();
     }
 
-    public function get_num_a(Facility_A $facility_A){
+    public function get_num_a($username){
 
+        $user = Facility_A::where('queuer', '=', $username)->first();
+        if($user){
+            $id = $user->id;
+            return Facility_A::where('id', '<', $id)->count();
+        }
+        else{
+            return 'Can\'t find user';
+        }
     }
 
     public function del_a(Facility_A $facility_A){
@@ -31,8 +39,16 @@ class FacilityController extends Controller
         return Facility_B::all()->count();
     }
 
-    public function get_num_b(Facility_B $facility_B){
+    public function get_num_b($username){
 
+        $user = Facility_B::where('queuer', '=', $username)->first();
+        if($user){
+            $id = $user->id;
+            return Facility_B::where('id', '<', $id)->count();
+        }
+        else{
+            return 'Can\'t find user';
+        }
     }
 
     public function del_b(Facility_B $facility_B){
