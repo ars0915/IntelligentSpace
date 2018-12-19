@@ -18,10 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('get_total_a', 'FacilityController@get_total_a');
-Route::get('get_num_a/{username}', 'FacilityController@get_num_a');
+Route::POST('create_a/{username}', 'FacilityController@create_a');
+Route::GET('get_total_a', 'FacilityController@get_total_a');
+Route::GET('get_num_a/{username}', 'FacilityController@get_num_a');
+#Route::delete('del_a/{username}', 'FacilityController@del_a');
 
 
 
-Route::get('get_total_b', 'FacilityController@get_total_b');
-Route::get('get_num_b/{username}', 'FacilityController@get_num_b');
+Route::POST('create_b/{username}', 'FacilityController@create_b');
+Route::GET('get_total_b', 'FacilityController@get_total_b');
+Route::GET('get_num_b/{username}', 'FacilityController@get_num_b');

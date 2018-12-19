@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class FacilityController extends Controller
 {
+
+    public function create_a($username){
+        Facility_A::create(['queuer' => $username]);
+        return response()->json(null, 200);
+    }
+
     public function get_total_a(){
         return Facility_A::all()->count();
     }
@@ -16,6 +22,7 @@ class FacilityController extends Controller
     public function get_num_a($username){
 
         $user = Facility_A::where('queuer', '=', $username)->first();
+
         if($user){
             $id = $user->id;
             return Facility_A::where('id', '<', $id)->count();
@@ -25,15 +32,28 @@ class FacilityController extends Controller
         }
     }
 
-    public function del_a(Facility_A $facility_A){
+    public function del_a($username){
+
+        $user = Facility_A::where('queuer', '=', $username)->findOrFail();
+
+        /*
+        if($user){
+            $user->delete();
+            #return response()->json(null, 204);
+        }
+        */
+    }
+
+    public function send_a($username){
 
     }
 
-    public function send_a(Facility_A $facility_A){
 
+
+    public function create_b($username){
+        Facility_B::create(['queuer' => $username]);
+        return response()->json(null, 200);
     }
-
-
 
     public function get_total_b(){
         return Facility_B::all()->count();
@@ -51,11 +71,11 @@ class FacilityController extends Controller
         }
     }
 
-    public function del_b(Facility_B $facility_B){
+    public function del_b($username){
 
     }
 
-    public function send_b(Facility_B $facility_B){
+    public function send_b($username){
 
     }
 

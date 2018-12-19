@@ -23,3 +23,4 @@ Route::get('get_total_b', 'FacilityController@get_total_b');
 
 Route::get('get_num_a/{username}', 'FacilityController@get_num_a');
 Route::get('get_num_b/{username}', 'FacilityController@get_num_b');
+
