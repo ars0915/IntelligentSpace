@@ -34,14 +34,14 @@ class FacilityController extends Controller
 
     public function del_a($username){
 
-        $user = Facility_A::where('queuer', '=', $username)->findOrFail();
+        $user = Facility_A::where('queuer', '=', $username)->first();
 
-        /*
         if($user){
             $user->delete();
-            #return response()->json(null, 204);
+            return response()->json(null, 204);
         }
-        */
+        return 'Can\'t find the user';
+
     }
 
     public function send_a($username){
@@ -72,6 +72,14 @@ class FacilityController extends Controller
     }
 
     public function del_b($username){
+
+        $user = Facility_B::where('queuer', '=', $username)->first();
+
+        if($user){
+            $user->delete();
+            return response()->json(null, 204);
+        }
+        return 'Can\'t find the user';
 
     }
 
