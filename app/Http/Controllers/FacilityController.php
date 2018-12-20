@@ -27,21 +27,20 @@ class FacilityController extends Controller
             $id = $user->id;
             return Facility_A::where('id', '<', $id)->count();
         }
-        else{
-            return 'Can\'t find user';
-        }
+        return 'Can\'t find user';
+        
     }
 
     public function del_a($username){
 
-        $user = Facility_A::where('queuer', '=', $username)->findOrFail();
+        $user = Facility_A::where('queuer', '=', $username)->first();
 
-        /*
         if($user){
             $user->delete();
-            #return response()->json(null, 204);
+            return response()->json(null, 204);
         }
-        */
+        return 'Can\'t find user';
+
     }
 
     public function send_a($username){
