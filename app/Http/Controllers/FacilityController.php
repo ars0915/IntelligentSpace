@@ -27,9 +27,8 @@ class FacilityController extends Controller
             $id = $user->id;
             return Facility_A::where('id', '<', $id)->count();
         }
-        else{
-            return 'Can\'t find user';
-        }
+        return 'Can\'t find user';
+        
     }
 
     public function del_a($username){
@@ -40,7 +39,7 @@ class FacilityController extends Controller
             $user->delete();
             return response()->json(null, 204);
         }
-        return 'Can\'t find the user';
+        return 'Can\'t find user';
 
     }
 
