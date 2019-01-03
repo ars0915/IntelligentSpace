@@ -38,9 +38,11 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
+
     public function lineBotServiceRegister(){
         $this->app->singleton(LineBotService::class, function(){
-           return new LineBotService(env('LINE_USER_ID'));
+           return new LineBotService();
         });
     }
+
 }

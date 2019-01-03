@@ -22,9 +22,9 @@ class LineBotServiceTest extends TestCase
     }
 
     public function testPushMessage(){
-        $response = $this->lineBotService->pushMessage('僕は悪いスライムじゃないよ！！');
+        $response = $this->lineBotService->pushMessage('U3ad81c5b9f6dd059a2b2b04c9045eb8f','僕は悪いスライムじゃないよ！！');
         #$this->assertJson(200, $response->getHTTPStatus());
-        #$this->assertEquals(200, $response->getHTTPStatus());
+        $this->assertEquals(200, $response->getHTTPStatus());
     }
 
 }

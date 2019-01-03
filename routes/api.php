@@ -24,9 +24,10 @@ Route::GET('get_num_a/{username}', 'FacilityController@get_num_a');
 Route::DELETE('del_a/{username}', 'FacilityController@del_a');
 
 
-
 Route::POST('create_b/{username}', 'FacilityController@create_b');
 Route::GET('get_total_b', 'FacilityController@get_total_b');
 Route::GET('get_num_b/{username}', 'FacilityController@get_num_b');
 Route::DELETE('del_b/{username}', 'FacilityController@del_b');
+
+Route::POST('sendid', 'StatusController@webhook');
 

@@ -18,21 +18,24 @@ class LineBotService{
     private $lineBot;
     private $lineUserId;
 
-    public function __construct($lineUserId)
+    public function __construct()
     {
-        $this->lineUserId = $lineUserId;
+        #$this->lineUserId = $lineUserId;
         $this->lineBot = app(LINEBot::class);
     }
 
     /**
-     * @param LINEBot\MessageBuilder\TemplateMessageBuilder | string $content
-     * @return Response
+     * @param $lineUserId
+     * @param $content
+     * @return LINEBot\Response
      */
 
-    public function pushMessage($content): Response{
+    public function pushMessage($lineUserId, $content){
         if (is_string($content)){
             $content = new TextMessageBuilder($content);
         }
-        return $this->lineBot->pushMessage($this->lineUserId, $content);
+        $this->lineUserId = $lineUserId;
+        $response =  $this->lineBot->pushMessage($this->lineUserId, $content);
+        return $response;
     }
 }
