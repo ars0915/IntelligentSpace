@@ -43,12 +43,6 @@ class FacilityController extends Controller
 
     }
 
-    public function send_a($username){
-
-    }
-
-
-
     public function create_b($username){
         Facility_B::create(['queuer' => $username]);
         return response()->json(null, 200);
@@ -79,10 +73,6 @@ class FacilityController extends Controller
             return response()->json(null, 204);
         }
         return 'Can\'t find the user';
-
-    }
-
-    public function send_b($username){
 
     }
 

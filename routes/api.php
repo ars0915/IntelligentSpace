@@ -30,4 +30,5 @@ Route::GET('get_num_b/{username}', 'FacilityController@get_num_b');
 Route::DELETE('del_b/{username}', 'FacilityController@del_b');
 
 Route::POST('sendid', 'StatusController@webhook');
-
+Route::POST('modify/{username}/{shopid}/{status}','StatusController@ModifyStatus');
+Route::GET("findshop/{username}",'StatusController@SearchShop');

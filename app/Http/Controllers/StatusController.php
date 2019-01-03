@@ -20,8 +20,11 @@ class StatusController extends Controller
         return response()->json(null, 404);
     }
 
-    public function SearchShop(){
-
+    public function SearchShop($username){
+        $Shop = UserandShopStatus::where('userid', '=', $username)->pluck('shopid');
+        if($Shop){
+            return $Shop;
+        }
     }
 
     /**
