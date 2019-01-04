@@ -11,8 +11,14 @@ class FacilityController extends Controller
 {
 
     public function create_a($username){
-        Facility_A::create(['queuer' => $username]);
-        return response()->json(null, 200);
+        $user = Facility_A::where('queuer', '=', $username)->first();
+        if($user){
+            return response()->json(null, 204);
+        }
+        else{
+            Facility_A::create(['queuer' => $username]);
+            return response()->json(null, 200);
+        }
     }
 
     public function get_total_a(){
@@ -44,8 +50,16 @@ class FacilityController extends Controller
     }
 
     public function create_b($username){
-        Facility_B::create(['queuer' => $username]);
-        return response()->json(null, 200);
+
+        $user = Facility_B::where('queuer', '=', $username)->first();
+        if($user){
+            return response()->json(null, 204);
+        }
+        else{
+            Facility_B::create(['queuer' => $username]);
+            return response()->json(null, 200);
+        }
+
     }
 
     public function get_total_b(){
@@ -74,6 +88,23 @@ class FacilityController extends Controller
         }
         return 'Can\'t find the user';
 
+    }
+
+
+    public function QueuedShop($username){
+        if(Facility_A::where('queuer', '=', $username)->first()){
+
+            if(Facility_B::where('queuer', '=', $username)->first()){
+                return 3;
+            }
+            else{
+                return 2;
+            }
+        }
+        elseif(Facility_B::where('queuer', '=', $username)->first()){
+            return 1;
+        }
+        return 0;
     }
 
 }

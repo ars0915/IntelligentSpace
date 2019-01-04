@@ -23,12 +23,14 @@ Route::GET('get_total_a', 'FacilityController@get_total_a');
 Route::GET('get_num_a/{username}', 'FacilityController@get_num_a');
 Route::DELETE('del_a/{username}', 'FacilityController@del_a');
 
-
 Route::POST('create_b/{username}', 'FacilityController@create_b');
 Route::GET('get_total_b', 'FacilityController@get_total_b');
 Route::GET('get_num_b/{username}', 'FacilityController@get_num_b');
 Route::DELETE('del_b/{username}', 'FacilityController@del_b');
 
+Route::GET('queued/{username}','FacilityController@QueuedShop');
+
 Route::POST('sendid', 'StatusController@webhook');
 Route::POST('modify/{username}/{shopid}/{status}','StatusController@ModifyStatus');
 Route::GET("findshop/{username}",'StatusController@SearchShop');
+
