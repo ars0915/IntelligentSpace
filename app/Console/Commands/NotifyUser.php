@@ -51,12 +51,13 @@ class NotifyUser extends Command
         $j = '0';
 
         foreach ($User_A as $a){
-            $response = $this->lineBotService->pushMessage($a,"前面只剩".strval($i++)."人");
-            echo $response->getHTTPStatus();
+            $response = $this->lineBotService->pushMessage($a,"ShopA前面只剩".strval($i++)."人");
+            echo 'pushed to '.$a."\n";
         }
 
         foreach ($User_B as $b){
-            $response = $this->lineBotService->pushMessage($b,"前面只剩".strval($j++)."人");
+            $response = $this->lineBotService->pushMessage($b,"ShopB前面只剩".strval($j++)."人");
+            echo 'pushed to '.$b."\n";
         }
     }
 }
