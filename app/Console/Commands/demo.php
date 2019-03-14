@@ -54,43 +54,45 @@ class demo extends Command
     public function handle()
     {
 
+        $sleepseconds = 5;
         $num_A = Facility_A::all()->count();
         $num_B = Facility_B::all()->count();
 
         if($num_A >= $num_B){
             while(Facility_B::where('id','>',0)->first()){
 
+                Artisan::call(NotifyUser::class);
+
                 $this->Deluser('A');
                 $this->Deluser('B');
 
-                Artisan::call(NotifyUser::class);
-                sleep(2);
+                sleep($sleepseconds);
 
             }
             while(Facility_A::where('id','>',0)->first()){
 
+                Artisan::call(NotifyUser::class);
                 $this->Deluser('A');
 
-                Artisan::call(NotifyUser::class);
-                sleep(2);
+                sleep($sleepseconds);
 
             }
         }
         else{
             while(Facility_A::where('id','>',0)->first()){
 
+                Artisan::call(NotifyUser::class);
                 $this->Deluser('A');
                 $this->Deluser('B');
 
-                Artisan::call(NotifyUser::class);
-                sleep(2);
+                sleep($sleepseconds);
             }
             while(Facility_B::where('id','>',0)->first()){
 
+                Artisan::call(NotifyUser::class);
                 $this->Deluser('B');
 
-                Artisan::call(NotifyUser::class);
-                sleep(2);
+                sleep($sleepseconds);
             }
         }
 
